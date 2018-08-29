@@ -7,11 +7,13 @@ const byte realLedCount = 208;
 
 const int firstPin =  11;
 const int secondPin = 13;
+const int thirdPin =  20;
+const int fourthPin = 21;
 
 // there are                                                                                                                                                                                                           hh led strips (12 on tubes, one for the tail lights and one for the dashboard)
 const byte numTubes = 7;
 
-const byte ledPinCount = 2;
+const byte ledPinCount = 4;
 
 // each tube has a different number of lights
 //const int longestTube = 42;
@@ -132,6 +134,8 @@ void setup()
   delay(1000);
   pinMode(firstPin, OUTPUT);
   pinMode(secondPin, OUTPUT);
+  pinMode(thirdPin, OUTPUT);
+  pinMode(fourthPin, OUTPUT);
 
   // enable LEDS for teensy prop shield);
   pinMode(7, OUTPUT);
@@ -139,8 +143,10 @@ void setup()
   
   LEDS.addLeds<WS2812, firstPin, GRB>(realLeds[0], realLedCount) ;
   LEDS.addLeds<WS2812, secondPin, GRB>(realLeds[1], realLedCount) ;
+  LEDS.addLeds<WS2812, thirdPin, GRB>(realLeds[0], realLedCount) ;
+  LEDS.addLeds<WS2812, fourthPin, GRB>(realLeds[1], realLedCount) ;
 
-  LEDS.setBrightness(20);
+  LEDS.setBrightness(63);
   FastLED.setDither(0);
         
   currentPalette = HeatColors_p;
